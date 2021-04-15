@@ -19,8 +19,6 @@ class ViewController: UIViewController {
     
     //Var
     
-    var timer = Timer()
-    
     let quiz = [
         
         Question(q: "A slug's blood is green.", a: "True"),
@@ -64,7 +62,7 @@ class ViewController: UIViewController {
             questionNumber = 0
         }
         
-        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
         
     }
     
