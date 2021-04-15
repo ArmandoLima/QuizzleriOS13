@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     
     //Var
     
+    var timer = Timer()
+    
     let quiz = [
         
         Question(q: "A slug's blood is green.", a: "True"),
@@ -51,9 +53,9 @@ class ViewController: UIViewController {
         let actualAnswer = quiz[questionNumber].answer
         
         if(userAnswer == actualAnswer){
-            print("Right")
+            sender.backgroundColor = UIColor.green
         }else{
-            print("Wrong")
+            sender.backgroundColor = UIColor.red
         }
         
         if(questionNumber + 1 < quiz.count){
@@ -62,14 +64,14 @@ class ViewController: UIViewController {
             questionNumber = 0
         }
         
-        updateUI()
-        
-        
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
         
     }
     
-    func updateUI(){
+    @objc func updateUI(){
         questionLabel.text = quiz[questionNumber].text
+        trueButton.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear
     }
     
     
